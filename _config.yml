@@ -1,0 +1,51 @@
+# Site settings
+name: Tuan Bui
+description: "Web Developer"
+url: ""
+
+
+# Delete the lines you don't need
+# about 5 elements are recomended
+github_username:  ntuanb
+codepen_username: ntuanb
+facebook_username: 
+vk_username: 
+twitter_username: 
+google_plus_username: 
+linkedin_username: tuan-bui-0502a366
+instagram_username:  
+flickr_username: 
+steam_username: 
+soundcloud_username:  
+stack_of_username: 5395398
+reddit_username: 
+medium_username:  
+tumblr_username: 
+weibo_username: 
+lastfm_username: 
+blog_url: "http://blog.tuanb.me"
+email: mail@tuanb.me
+public_key_url: 
+jsfiddle: ntuanb
+
+
+avatar: no
+#avatar_img_path: "imgs/avatar.jpg""
+# You can link to your GitHub image. That way it will get updated
+# automatically whenever you change your GitHub profile picture
+avatar_img_path: "https://avatars2.githubusercontent.com/u/17301305"
+
+
+front_img: yes
+front_img_path: "imgs/background.jpg"
+#front_img_path: "https://external.url/image.jpg"
+
+
+favicon_img: yes
+favicon_img_path: "imgs/favicon.ico"
+#favicon_img_path: "https://external.url/favicon.ico"
+
+
+# Build settings
+markdown: kramdown
+permalink: pretty
