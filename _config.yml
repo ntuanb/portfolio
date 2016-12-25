@@ -36,7 +36,7 @@ avatar: no
 avatar_img_path: "https://avatars2.githubusercontent.com/u/17301305"
 
 
-front_img: yes
+front_img: no
 front_img_path: "imgs/background.jpg"
 #front_img_path: "https://external.url/image.jpg"
 
@@ -45,6 +45,8 @@ favicon_img: yes
 favicon_img_path: "imgs/favicon.ico"
 #favicon_img_path: "https://external.url/favicon.ico"
 
+cinemagraph: yes
+cinemagraph_path: "imgs/cinemagraph.mp4"
 
 # Build settings
 markdown: kramdown

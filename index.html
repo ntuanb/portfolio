@@ -18,10 +18,21 @@ permalink: /
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     </head>
     <body>
+
+        {% if site.cinemagraph %}
+            <div class="cinemagraph">
+                <video
+                    src="{{ site.cinemagraph_path }}"
+                    autoplay loop height="100%"
+                />
+            </div>
+        {% endif %}
+
         <div class="content">
             <div>
+
             {% if site.front_img %}
-            <img src="{{ site.front_img_path }}" id="fullscreen">
+                <img src="{{ site.front_img_path }}" id="fullscreen">
             {% endif %}
 
             {% if site.avatar %}
