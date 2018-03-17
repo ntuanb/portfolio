@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 body {
-    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: rgba(0, 0, 0, 0.9);
     position: absolute; 
     top: 0;
@@ -27,9 +29,7 @@ body {
 h1 {
     color: white;
     font-weight: bold;
-    letter-spacing: 0.1em;
     font-size: 4em;
-    font-family: 'Open Sans';
     margin: -10px 0;
 }
 h3 {
@@ -105,7 +105,6 @@ a {
     .description {
         display: inline-block;
         color: white;
-        font-family: Arial;
         margin-left: 40px;
     }
 }
