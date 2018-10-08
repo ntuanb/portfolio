@@ -1,7 +1,7 @@
 # Site settings
 name: Tuan Bui
 description: "Web Developer"
-url: ""
+url: "https://tuanb.me"
 title: "Tuan Bui - Web Developer"
 
 # Delete the lines you don't need
@@ -24,7 +24,7 @@ tumblr_username:
 weibo_username: 
 lastfm_username: 
 blog_url: "http://blog.tuanb.me"
-email:
+email: "ntuanb@gmail.com"
 public_key_url: 
 jsfiddle: ntuanb
 
