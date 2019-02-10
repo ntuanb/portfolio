@@ -140,10 +140,13 @@ permalink: /
     </div>
 
     <script>
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-        document.getElementsByTagName('video')[0].setAttribute('src', 'imgs/cinemagraph-' + (getRandomInt(1, 3)) + '.mp4');
+        fetch('https://api.unsplash.com/photos/random?client_id=a43610a5396ae03cbfe517d327a8e4e7222429dda7ff053921301367b8f3d6cf')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(json) {
+                document.body.style.backgroundImage = 'url(' + json.urls.raw + ')';
+            });
     </script>
 
     <script>
