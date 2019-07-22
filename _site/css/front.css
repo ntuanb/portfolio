@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Saira&display=swap');
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Saira', sans-serif;
     background-color: rgba(0, 0, 0, 0.9);
     position: absolute; 
     top: 0;
@@ -36,13 +36,19 @@ p {
 h1 {
     color: white;
     font-weight: bold;
-    font-size: 4em;
-    margin: -10px 0;
+    font-size: 5em;
+    margin: 0;
+    text-transform: uppercase;
+    padding: 0;
+    line-height: 1.4;
 }
 h3 {
     color: white;
-    padding-bottom: 20px;
-    font-weight: thin;
+    padding: 0;
+    font-weight: 300;
+    margin: 0 0 2.5rem 0;
+    line-height: 1.4;
+    font-size: 1.25rem;
 }
 .content {
     display: flex;
@@ -58,14 +64,10 @@ ul {
     padding: 0;
 }
 li {
-    border-radius: 100%;
-    border: 2px solid white;
     color: white;
     margin: 8px;
     display: inline-block;
     list-style: none;
-    width: 65px;
-    height: 65px;
 }
 li:hover {
     color: white;
@@ -75,6 +77,10 @@ li:hover {
     transition: 500ms;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.5);
+}
+.round {
+    border-radius: 100%;
+    border: 2px solid white;
 }
 a {
     color: white;
@@ -118,6 +124,12 @@ a {
 
 @media screen and (orientation:landscape) and (max-width: 1024px) {
     .hide-landscape {
+        display: none;
+    }
+}
+
+@media only screen and (orientation:portrait) and (max-width: 500px) {
+    .hide-mobile {
         display: none;
     }
 }
