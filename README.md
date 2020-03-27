@@ -1,17 +1,11 @@
-# front cover jekyll theme
+# Portfolio
 
-## Why choose this jekyll theme for your front page?
-* You don't have to modify any HTML, everything can be modified in config.yml.
-* Very lightweight. No Javascript, No Bootstrap etc..
-* MIT licensed.
+- Jekyll
 
+## Build
 
-## See it in action
-<a href="https://dashingcode.github.io/front-cover/">Live demo page</a>
+- jekyll build
 
-## Credits
-The background image that was used as an example comes from Tom Hall.
-You can find it on <a href="https://flic.kr/p/pqEPBb">Flickr</a>.
-It's licensed under Creative-Commons.
+## Dev
 
-This theme makes use of the amazing <a href="http://fontawesome.io/">Font Awesome</a> icons.
+- jekyll serve
