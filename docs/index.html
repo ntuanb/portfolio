@@ -36,31 +36,29 @@
             <h1>Tuan Bui</h1>
             <h3 class="hide-landscape">Web Developer</h3>
 
+            <p class="hide-mobile">Get in touch</p>
             <ul>
-                <li class="hide-mobile">Get in touch</li>
                 
-                <li class="round"><a class="fa fa-1x fa-envelope" href="mailto:ntuanb@gmail.com" target="_blank"></a></li>
+                <li class="button button--circle"><a class="fa fa-1x fa-envelope" href="mailto:ntuanb@gmail.com" target="_blank"></a></li>
                 
 
                 
-                <li class="round"><a class="fa fa-1x fa-linkedin" href="https://linkedin.com/in/tuan-bui-0502a366" target="_blank"></a></li>
+                <li class="button button--circle"><a class="fa fa-1x fa-linkedin" href="https://linkedin.com/in/tuan-bui-0502a366" target="_blank"></a></li>
                 
             </ul>
 
+            <p class="hide-mobile">Check these out</p>
             <ul>
-                <li class="hide-mobile">Cheeck these out</li>
                 
-                <li class="round"><a class="fa fa-1x fa-github" href="https://github.com/ntuanb" target="_blank"></a></li>
-                
-
-                
-                <li class="round"><a class="fa fa-1x fa-leanpub" href="https://app.pluralsight/profile/tuan-bui-c4" target="_blank"></a></li>
+                <li class="button button--circle"><a class="fa fa-1x fa-github" href="https://github.com/ntuanb" target="_blank"></a></li>
                 
 
                 
-                <li class="round"><a class="fa fa-1x fa-codepen" href="https://codepen.io/ntuanb" target="_blank"></a></li>
+                <li class="button button--circle"><a class="fa fa-1x fa-leanpub" href="https://app.pluralsight/profile/tuan-bui-c4" target="_blank"></a></li>
                 
 
+                
+                <li class="button button--circle"><a class="fa fa-1x fa-codepen" href="https://codepen.io/ntuanb" target="_blank"></a></li>
                 
 
                 
@@ -92,18 +90,30 @@
                 
 
                 
-                <li class="round"><a class="fa fa-1x fa-tags" href="http://blog.tuanb.me" target="_blank"></a></li>
+
+                
+                <li class="button button--circle"><a class="fa fa-1x fa-tags" href="http://blog.tuanb.me" target="_blank"></a></li>
                 
 
                 
 
                 
-                <li class="round"><a class="fa fa-1x fa-jsfiddle" href="http://jsfiddle.net/user/ntuanb/fiddles/" target="_blank"></a></li>
+                <li class="button button--circle"><a class="fa fa-1x fa-jsfiddle" href="http://jsfiddle.net/user/ntuanb/fiddles/" target="_blank"></a></li>
                 
 
-                <li class="round"><a class="fa fa-1x fa-code" href="https://www.codewars.com/users/ntuanb" target="_blank"></a></li>
+                <li class="button button--circle"><a class="fa fa-1x fa-code" href="https://www.codewars.com/users/ntuanb" target="_blank"></a></li>
             </ul>
+
+            <p class="hide-mobile">Others</p>
+            <ul>
+                <li><a href="https://classrooms.tuanb.me" class="button button--round">Classrooms</a></li>
+            </ul>
+
         </div>
+    </div>
+
+    <div class="refresh">
+        <a href="#" onclick="getBackground()">Refresh</a>
     </div>
 
     <script>
@@ -118,14 +128,31 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script defer>
-        fetch('https://api.unsplash.com/photos/random?client_id=a43610a5396ae03cbfe517d327a8e4e7222429dda7ff053921301367b8f3d6cf')
-            .then(function(response) {
-                if (response.status === 200) return response.json();
-                else particlesJS.load('particles', 'js/particles.json');
-            })
-            .then(function(json) {
-                if (json) document.body.style.backgroundImage = 'url(' + json.urls.regular + ')';
-            });
+        let isOverloaded = false;
+        let getBackground = function() {
+            fetch('https://api.unsplash.com/photos/random?client_id=a43610a5396ae03cbfe517d327a8e4e7222429dda7ff053921301367b8f3d6cf')
+                .then(function(response) {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        isOverloaded = true;
+                        particlesJS.load('particles', 'js/particles.json');
+                    };
+                })
+                .then(function(json) {
+                    if (json) document.body.style.backgroundImage = 'url(' + json.urls.regular + ')';
+                });
+        }
+
+        getBackground();
+        let interval = setInterval(function() {
+            if (isOverloaded) {
+                clearInterval(interval);
+                return;
+            }
+
+            getBackground();
+        }, 15000);
     </script>
 
     </body>

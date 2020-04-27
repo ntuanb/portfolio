@@ -80,9 +80,16 @@ li:hover {
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.round {
-    border-radius: 100%;
+.button--circle {
     border: 2px solid white;
+}
+.button--round {
+    border: 2px solid white;
+}
+.refresh {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
 }
 a {
     color: white;
