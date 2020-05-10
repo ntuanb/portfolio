@@ -130,6 +130,11 @@ a {
         color: white;
         text-decoration: none;
     }
+    .description {
+        display: inline-block;
+        color: white;
+        margin-left: 40px;
+    }
 }
 
 @media screen and (orientation:landscape) and (max-width: 1024px) {

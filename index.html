@@ -41,7 +41,7 @@ permalink: /
             {% endif %}
 
             <h1>{{ site.name }}</h1>
-            <h3 class="hide-landscape">{{ site.description }}</h3>
+            <h3 class="description hide-landscape">{{ site.description }}</h3>
 
             <p class="hide-mobile">Get in touch</p>
             <ul>
@@ -142,14 +142,14 @@ permalink: /
 
                 <li class="button button--circle"><a class="fa fa-1x fa-code" href="https://www.codewars.com/users/ntuanb" target="_blank"></a></li>
 
-                <li class="button button--circle"><a class="fa fa-1x fa-school" href="https://classrooms.tuanb.me"></a></li>
+                <li class="button button--circle"><a class="fa fa-1x fa-graduation-cap" href="https://classrooms.tuanb.me"></a></li>
 
             </ul>
         </div>
     </div>
 
     <div class="refresh">
-        <a href="#" onclick="getBackground()">Refreshing...</a>
+        <a href="#" onclick="getBackground()"><small>Refreshing background...</small></a>
     </div>
 
     <script>
@@ -164,6 +164,7 @@ permalink: /
 
     <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script defer>
+        console.log('Backgrounds generated from Unsplash.');
         let isOverloaded = false;
         let getBackground = function() {
             fetch('https://api.unsplash.com/photos/random?client_id=a43610a5396ae03cbfe517d327a8e4e7222429dda7ff053921301367b8f3d6cf')
@@ -188,7 +189,7 @@ permalink: /
             }
 
             getBackground();
-        }, 15000);
+        }, 30000);
     </script>
 
     </body>
