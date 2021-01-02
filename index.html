@@ -43,7 +43,7 @@ permalink: /
             <h1>{{ site.name }}</h1>
             <h3 class="description hide-landscape">{{ site.description }}</h3>
 
-            <p class="hide-mobile">Get in touch</p>
+            <p class="hide-mobile hide-landscape">Get in touch</p>
             <ul>
                 {% if site.email %}
                 <li class="button button--circle"><a class="fa fa-1x fa-envelope" href="mailto:{{ site.email }}" target="_blank"></a></li>
@@ -54,7 +54,7 @@ permalink: /
                 {% endif %}
             </ul>
 
-            <p class="hide-mobile">Check these out</p>
+            <p class="hide-mobile  hide-landscape">Check these out</p>
             <ul>
                 {% if site.github_username %}
                 <li class="button button--circle"><a class="fa fa-1x fa-github" href="https://github.com/{{ site.github_username }}" target="_blank"></a></li>
@@ -147,9 +147,20 @@ permalink: /
             </ul>
         </div>
     </div>
-
     <div class="refresh">
-        <a href="#" onclick="getBackground()"><small>Refreshing background...</small></a>
+        <a href="#" onclick="getBackground()" class="hide-mobile hide-landscape">
+            <div class="loader"></div>
+        </a>
+
+        {% if site.spotify %}
+            <div class="music marquee-container">
+                <div class="marquee">
+                    <span>Recently Played</span>
+                    <span class="fa fa-1x fa-spotify"></span>
+                    <a class="spotify" target="_blank"></a>
+                </div>
+            </div>
+        {% endif %}
     </div>
 
     <script>
@@ -164,10 +175,11 @@ permalink: /
 
     <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script defer>
+        // Background
         console.log('Backgrounds generated from Unsplash.');
-        let isOverloaded = false;
-        let getBackground = function() {
-            fetch('https://api.unsplash.com/photos/random?client_id=a43610a5396ae03cbfe517d327a8e4e7222429dda7ff053921301367b8f3d6cf')
+        var isOverloaded = false;
+        var getBackground = function() {
+            fetch('https://api.unsplash.com/photos/random?featured=true&content_filter=high&client_id=a43610a5396ae03cbfe517d327a8e4e7222429dda7ff053921301367b8f3d6cf')
                 .then(function(response) {
                     if (response.status === 200) {
                         return response.json();
@@ -181,15 +193,41 @@ permalink: /
                 });
         }
 
-        getBackground();
-        let interval = setInterval(function() {
+        var interval = setInterval(function() {
             if (isOverloaded) {
                 clearInterval(interval);
                 return;
             }
 
             getBackground();
-        }, 30000);
+        }, 60000);
+
+        getBackground();
+
+        var getSong = function() {
+            fetch('https://api.tuanb.me/spotify')
+                .then(function(response) {
+                    if (response && response.status !== 200) return;
+                    return response.json()
+                })
+                .then(function(json) {
+                    if (!json) return;
+
+                    var track = json[0];
+                    var title = track.title;
+
+                    var spotifyHtml = document.getElementsByClassName('spotify');
+                    var titleHtml = title;
+                    spotifyHtml[0].innerHTML = titleHtml
+                    spotifyHtml[0].href = track.external_urls.spotify
+
+                    var musicHtml = document.getElementsByClassName('music');
+                    musicHtml[0].style.display = 'block'
+                })
+        }
+
+        getSong();
+        
     </script>
 
     </body>
