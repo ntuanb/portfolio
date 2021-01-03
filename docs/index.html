@@ -159,6 +159,7 @@
                         setTimeout(() => {
                             particlesJS.load('particles', 'js/particles.json');
                         })
+                        return done();
                     };
                 })
                 .then(function(json) {
