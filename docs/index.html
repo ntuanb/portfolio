@@ -159,7 +159,6 @@
                         setTimeout(() => {
                             particlesJS.load('particles', 'js/particles.json');
                         })
-                        return done();
                     };
                 })
                 .then(function(json) {
@@ -214,6 +213,9 @@
                     </div>
                     `
 
+                    return done();
+                })
+                .catch(() => {
                     return done();
                 })
         }
