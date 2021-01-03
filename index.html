@@ -30,7 +30,7 @@ permalink: /
         <div id="particles" class="particles"></div>
 
         <div class="content">
-            <div>
+            <div class="content__animate">
 
             {% if site.front_img %}
                 <img src="{{ site.front_img_path }}" id="fullscreen">
@@ -145,23 +145,22 @@ permalink: /
                 <li class="button button--circle"><a class="fa fa-1x fa-graduation-cap" href="https://classrooms.tuanb.me"></a></li>
 
             </ul>
+            {% if site.spotify %}
+                <div class="music marquee-container spotify">
+                    <div class="spotify__source"></div>
+                    <div class="marquee">
+                        <a class="spotify__track" target="_blank"></a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
-    <div class="refresh">
-        <a href="#" onclick="getBackground()" class="hide-mobile hide-landscape">
-            <div class="loader"></div>
-        </a>
-
-        {% if site.spotify %}
-            <div class="music marquee-container">
-                <div class="marquee">
-                    <span>Recently Played</span>
-                    <span class="fa fa-1x fa-spotify"></span>
-                    <a class="spotify" target="_blank"></a>
-                </div>
-            </div>
-        {% endif %}
+    <div class="preview">
     </div>
+
+    <a href="#" onclick="getBackground()" class="refresh hide-mobile hide-landscape">
+        <div class="loader"></div>
+    </a>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -175,6 +174,14 @@ permalink: /
 
     <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script defer>
+        var done = function() {
+            setTimeout(function() {
+                var doneHtml = document.getElementsByClassName('content__animate');
+
+                doneHtml[0].style.transform = 'scale(1)';
+            })
+        }
+
         // Background
         console.log('Backgrounds generated from Unsplash.');
         var isOverloaded = false;
@@ -185,7 +192,9 @@ permalink: /
                         return response.json();
                     } else {
                         isOverloaded = true;
-                        particlesJS.load('particles', 'js/particles.json');
+                        setTimeout(() => {
+                            particlesJS.load('particles', 'js/particles.json');
+                        })
                     };
                 })
                 .then(function(json) {
@@ -207,7 +216,7 @@ permalink: /
         var getSong = function() {
             fetch('https://api.tuanb.me/spotify')
                 .then(function(response) {
-                    if (response && response.status !== 200) return;
+                    if (response && response.status !== 200) return done();
                     return response.json()
                 })
                 .then(function(json) {
@@ -216,13 +225,31 @@ permalink: /
                     var track = json[0];
                     var title = track.title;
 
-                    var spotifyHtml = document.getElementsByClassName('spotify');
+                    var spotifyHtml = document.getElementsByClassName('spotify__track');
                     var titleHtml = title;
                     spotifyHtml[0].innerHTML = titleHtml
-                    spotifyHtml[0].href = track.external_urls.spotify
 
                     var musicHtml = document.getElementsByClassName('music');
-                    musicHtml[0].style.display = 'block'
+
+                    if (!track.preview_url) return done();
+
+                    var playHtml = document.getElementsByClassName('spotify__source');
+                    playHtml[0].innerHTML = `
+                    <div>
+                        <audio class="player" loop>
+                            <source src="${track.preview_url}" type="audio/mpeg"/>
+                        </audio>
+                        <div>
+                            <img src="${track.album.images[1].url}" height="50" width="50" />
+                        </div>
+                        <div style="padding: 0.75rem;"> 
+                            <span class="fa fa-2x fa-play spotify__play" onclick="document.getElementsByClassName('spotify__play')[0].style.display = 'none'; document.getElementsByClassName('spotify__pause')[0].style.display = 'block'; document.getElementsByClassName('player')[0].play(); "></span>
+                            <span class="fa fa-2x fa-pause spotify__pause" style="display: none;" onclick="document.getElementsByClassName('spotify__pause')[0].style.display = 'none'; document.getElementsByClassName('spotify__play')[0].style.display = 'block'; document.getElementsByClassName('player')[0].pause()";"></span>
+                        </div>
+                    </div>
+                    `
+
+                    return done();
                 })
         }
 

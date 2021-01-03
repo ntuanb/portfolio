@@ -51,6 +51,7 @@ h3 {
     line-height: 1.4;
     font-size: 1.25rem;
 }
+
 .content {
     display: flex;
     align-items: center;
@@ -60,6 +61,7 @@ h3 {
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
+
 ul {
     list-style: none;
     padding: 0;
@@ -86,11 +88,16 @@ li:hover {
 .button--circle a {
     padding: 15px;
 }
-.refresh {
+.preview {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 1rem;
+}
+.refresh {
+    position: absolute;
+    left: 1rem;
+    bottom: 0rem;
 }
 a {
     color: white;
@@ -98,6 +105,10 @@ a {
 }
 .description {
     display: none;
+}
+.content__animate {
+    transform: scale(0);
+    transition: all 0.5s ease-in-out;
 }
 .particles {
     position: absolute;
@@ -136,7 +147,8 @@ a {
 
 @media screen and (orientation:landscape) and (max-width: 1024px) {
     h1 {
-        font-size: 2rem;
+        font-size: 3rem;
+        margin-bottom: 1rem;
     }
     .hide-landscape {
         display: none;
@@ -156,8 +168,7 @@ a {
     color: white;
     font-size: 0.75rem;
     text-align: center;
-    width: 75vw;
-    display: none;
+    margin-top: 1rem;
 }
 
 .loader,
