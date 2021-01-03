@@ -195,6 +195,14 @@ a {
     margin-top: 1rem;
 }
 
+.apis {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: 0.75rem;
+}
+
 .loader,
 .loader:after {
   border-radius: 50%;
