@@ -131,11 +131,17 @@ a {
     ul {
         text-align: center;
     }
+    li {
+        margin: 5px;
+    }
     li:hover {
         background-color: none;
         transition: none;
     }
-    a:hover {
+    .button--circle a {
+        padding: 10px;
+    }
+    .button--circle a:hover {
         -webkit-transition: 500ms;
         -moz-transition: 500ms;
         transition: 500ms;
@@ -168,8 +174,29 @@ a {
     color: white;
     font-size: 0.75rem;
     text-align: center;
-    margin-top: 1rem;
+    margin: 1rem auto 0;
     max-width: 95vw;
+}
+
+.music__wave {
+    height: 5rem;
+    width: 10rem;
+}
+
+@media only screen and (orientation:portrait) and (max-width: 500px) {
+    .music__wave {
+        height: 3rem;
+        width: 60vw;
+    }
+}
+
+@media screen and (orientation:landscape) and (max-width: 1024px) {
+    .music__album {
+        display: none;
+    }
+    .music__wave {
+        display: none;
+    }
 }
 
 .weather {
@@ -180,6 +207,7 @@ a {
     text-align: right;
     transform: translate(0, -200%);
     transition: transform 0.55s ease-in-out;
+    font-size: 0.75rem;
 }
 
 .apis {

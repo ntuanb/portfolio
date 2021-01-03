@@ -150,8 +150,11 @@ permalink: /
                     <div class="marquee">
                         <a class="spotify__track" target="_blank"></a>
                     </div>
+                    <canvas id="output" class="music__wave" height="500" width="500"></canvas>
                 </div>
             {% endif %}
+
+
         </div>
     </div>
 
@@ -180,6 +183,7 @@ permalink: /
         ga('send', 'pageview');
     </script>
 
+    <script defer src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.iife.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script defer>
         var done = function() {
@@ -244,10 +248,10 @@ permalink: /
                     var playHtml = document.getElementsByClassName('spotify__source');
                     playHtml[0].innerHTML = `
                     <div>
-                        <audio class="player" loop>
+                        <audio id="player" class="player" loop>
                             <source src="${track.preview_url}" type="audio/mpeg"/>
                         </audio>
-                        <a href="${track.external_urls.spotify}" title="${track.title}">
+                        <a href="${track.external_urls.spotify}" title="${track.title}" class="music__album">
                             <img src="${track.album.images[1].url}" height="50" width="50" />
                         </a>
                         <div style="padding: 0.75rem;"> 
@@ -256,6 +260,13 @@ permalink: /
                         </div>
                     </div>
                     `
+
+                    let wave = new Wave();
+                    options = {
+                        type: 'static',
+                        colors: ['white', 'grey']
+                    };
+                    wave.fromElement("player","output", options);
 
                     return done();
                 })
