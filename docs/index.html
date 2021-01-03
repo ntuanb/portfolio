@@ -6,7 +6,7 @@
         <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
         <title>Tuan Bui</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
+        <meta name="description" content="Hi, I'm Tuan, a Web developer from Melbourne, Australia. I build and maintain websites. I love javascript, typescript and automation.">
         <link rel="canonical" href="https://tuanb.me/">
         
         <link rel="shortcut icon" href="imgs/favicon.ico" />
@@ -34,7 +34,6 @@
             
 
             <h1>Tuan</h1>
-            <h3 class="description hide-landscape"></h3>
 
             <p class="hide-mobile hide-landscape">Get in touch</p>
             <ul>
@@ -209,7 +208,7 @@
                         <audio class="player" loop>
                             <source src="${track.preview_url}" type="audio/mpeg"/>
                         </audio>
-                        <a href="${track.external_urls.spotify}">
+                        <a href="${track.external_urls.spotify}" title="${track.title}">
                             <img src="${track.album.images[1].url}" height="50" width="50" />
                         </a>
                         <div style="padding: 0.75rem;"> 
@@ -241,7 +240,7 @@
 
                     json.slice(0, 3).forEach((item) => {
                         var h = `
-                            <a href="${item.permalink}" target="_blank">
+                            <a href="${item.permalink}" target="_blank" title="${item.title}">
                                 <span class="fa fa-1x fa-newspaper-o" style="padding-right: 0.5rem; "></span><span>${item.title}</span>
                             </a>
                         `
