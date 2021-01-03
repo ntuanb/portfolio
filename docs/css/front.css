@@ -218,6 +218,12 @@ a {
     font-size: 0.75rem;
 }
 
+@media (max-width: 450px) {
+    .apis {
+        display: none
+    }
+}
+
 .news {
     top: 1rem;
     left: 1rem;
