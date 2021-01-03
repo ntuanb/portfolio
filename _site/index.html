@@ -33,7 +33,7 @@
 
             
 
-            <h1>Tuan Bui</h1>
+            <h1>Tuan</h1>
             <h3 class="description hide-landscape"></h3>
 
             <p class="hide-mobile hide-landscape">Get in touch</p>
@@ -122,12 +122,14 @@
 
     <div class="news"></div>
 
+    <div class="weather"></div>
+
     <a href="#" onclick="getBackground()" class="refresh hide-mobile hide-landscape">
         <div class="loader"></div>
     </a>
 
     <div class="apis">
-        <span>Unsplash, Reddit, Spotify</span>
+        <span>Unsplash, Reddit, Spotify, OpenWeather</span>
     </div>
 
     <script>
@@ -253,7 +255,29 @@
         }
 
         getReddit();
-        
+
+        var getWeather = function() {
+            fetch('http://localhost:5000/weather')
+                .then(function(response) {
+                    if (response && response.status !== 200) return;
+                    return response.json()
+                })
+                .then(function(json) {
+                    if (!json) return;
+
+                    var h = `
+                        <div>${json.main.temp} &deg;</div>
+                        <div>${json.name}</div>
+                    `
+
+                    var html = document.getElementsByClassName('weather');
+                    html[0].innerHTML = h
+                    html[0].style.transform = 'translate(0, 0%)';
+                })
+        }
+
+        getWeather();
+                
     </script>
 
     </body>

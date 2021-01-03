@@ -62,30 +62,6 @@ h3 {
     text-align: center;
 }
 
-.news {
-    top: 1rem;
-    left: 1rem;
-    position: absolute;
-    max-width: 50vw;
-    transform: translate(0, -200%);
-    transition: transform 0.55s ease-in-out;
-}
-
-@media (max-width: 450px) {
-    .news {
-        max-width: 80vw;
-    }
-}
-
-.news > a {
-    color: white;
-    font-size: 0.75rem;
-    text-overflow: ellipsis;
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 ul {
     list-style: none;
     padding: 0;
@@ -193,6 +169,17 @@ a {
     font-size: 0.75rem;
     text-align: center;
     margin-top: 1rem;
+    max-width: 95vw;
+}
+
+.weather {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    text-align: right;
+    transform: translate(0, -200%);
+    transition: transform 0.55s ease-in-out;
 }
 
 .apis {
@@ -201,6 +188,30 @@ a {
     right: 1rem;
     color: white;
     font-size: 0.75rem;
+}
+
+.news {
+    top: 1rem;
+    left: 1rem;
+    position: absolute;
+    max-width: 50vw;
+    transform: translate(0, -200%);
+    transition: transform 0.55s ease-in-out;
+}
+
+@media (max-width: 450px) {
+    .news {
+        max-width: 60vw;
+    }
+}
+
+.news > a {
+    color: white;
+    font-size: 0.75rem;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .loader,
