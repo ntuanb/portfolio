@@ -155,8 +155,11 @@ permalink: /
             {% endif %}
         </div>
     </div>
+
     <div class="preview">
     </div>
+
+    <div class="news"></div>
 
     <a href="#" onclick="getBackground()" class="refresh hide-mobile hide-landscape">
         <div class="loader"></div>
@@ -220,7 +223,7 @@ permalink: /
                     return response.json()
                 })
                 .then(function(json) {
-                    if (!json) return;
+                    if (!json) return done();
 
                     var track = json[0];
                     var title = track.title;
@@ -239,9 +242,9 @@ permalink: /
                         <audio class="player" loop>
                             <source src="${track.preview_url}" type="audio/mpeg"/>
                         </audio>
-                        <div>
+                        <a href="${track.external_urls.spotify}">
                             <img src="${track.album.images[1].url}" height="50" width="50" />
-                        </div>
+                        </a>
                         <div style="padding: 0.75rem;"> 
                             <span class="fa fa-2x fa-play spotify__play" onclick="document.getElementsByClassName('spotify__play')[0].style.display = 'none'; document.getElementsByClassName('spotify__pause')[0].style.display = 'block'; document.getElementsByClassName('player')[0].play(); "></span>
                             <span class="fa fa-2x fa-pause spotify__pause" style="display: none;" onclick="document.getElementsByClassName('spotify__pause')[0].style.display = 'none'; document.getElementsByClassName('spotify__play')[0].style.display = 'block'; document.getElementsByClassName('player')[0].pause()";"></span>
@@ -254,6 +257,34 @@ permalink: /
         }
 
         getSong();
+
+        var getReddit = function() {
+            fetch('https://api.tuanb.me/reddit')
+                .then(function(response) {
+                    if (response && response.status !== 200) return;
+                    return response.json()
+                })
+                .then(function(json) {
+                    if (!json) return;
+
+                    var html = '';
+
+                    json.slice(0, 3).forEach((item) => {
+                        var h = `
+                            <a href="${item.permalink}" target="_blank">
+                                <span class="fa fa-1x fa-newspaper-o" style="padding-right: 0.5rem; "></span><span>${item.title}</span>
+                            </a>
+                        `
+                        html += h
+                    })
+
+                    var newsHtml = document.getElementsByClassName('news');
+                    newsHtml[0].innerHTML = html;
+                    newsHtml[0].style.transform = 'translate(0, 0%)';
+                })
+        }
+
+        getReddit();
         
     </script>
 
