@@ -296,7 +296,7 @@ permalink: /
         getReddit();
 
         var getWeather = function() {
-            fetch('http://localhost:5000/weather')
+            fetch('https://api.tuanb.me/weather')
                 .then(function(response) {
                     if (response && response.status !== 200) return;
                     return response.json()
