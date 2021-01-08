@@ -86,7 +86,8 @@ li:hover {
     border: 2px solid white;
 }
 .button--circle a {
-    padding: 15px;
+    padding: 0 16px;
+    line-height: 3rem;
 }
 .preview {
     position: absolute;
@@ -139,7 +140,8 @@ a {
         transition: none;
     }
     .button--circle a {
-        padding: 10px;
+        padding: 0 16px;
+        line-height: 3rem;
     }
     .button--circle a:hover {
         -webkit-transition: 500ms;

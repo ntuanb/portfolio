@@ -49,17 +49,17 @@
             <p class="hide-mobile  hide-landscape">Check these out</p>
             <ul>
                 
+                <li class="button button--circle"><a href="https://soundcloud.com/ntuanb" target="_blank"><span class="fa fa-1x fa-soundcloud"></span> Soundcloud</a></li>
+                
+
+                
                 <li class="button button--circle"><a class="fa fa-1x fa-github" href="https://github.com/ntuanb" target="_blank"></a></li>
                 
 
                 
-                <li class="button button--circle"><a class="fa fa-1x fa-leanpub" href="https://app.pluralsight/profile/tuan-bui-c4" target="_blank"></a></li>
-                
 
                 
                 <li class="button button--circle"><a class="fa fa-1x fa-codepen" href="https://codepen.io/ntuanb" target="_blank"></a></li>
-                
-
                 
 
                 
@@ -105,16 +105,17 @@
                 <li class="button button--circle"><a class="fa fa-1x fa-graduation-cap" href="https://classrooms.tuanb.me"></a></li>
 
             </ul>
-            
-                <div class="music marquee-container spotify">
-                    <div class="spotify__source"></div>
-                    <div class="marquee">
-                        <a class="spotify__track" target="_blank"></a>
-                    </div>
-                    <canvas id="output" class="music__wave" height="500" width="500"></canvas>
-                </div>
-            
 
+            <div class="music">
+                
+                    <div class="spotify">
+                        <div class="spotify__source"></div>
+                        <div class="marquee">
+                            <a class="spotify__track" target="_blank"></a>
+                        </div>
+                    </div>
+                
+            </div>
 
         </div>
     </div>
@@ -144,7 +145,6 @@
         ga('send', 'pageview');
     </script>
 
-    <script defer src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.iife.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script defer>
         var done = function() {
@@ -159,7 +159,7 @@
         console.log('Backgrounds generated from Unsplash.');
         var isOverloaded = false;
         var getBackground = function() {
-            fetch('https://api.unsplash.com/photos/random?featured=true&content_filter=high&client_id=a43610a5396ae03cbfe517d327a8e4e7222429dda7ff053921301367b8f3d6cf')
+            fetch('https://api.unsplash.com/photos/random?featured=true&content_filter=low&client_id=a43610a5396ae03cbfe517d327a8e4e7222429dda7ff053921301367b8f3d6cf')
                 .then(function(response) {
                     if (response.status === 200) {
                         return response.json();
@@ -221,13 +221,6 @@
                         </div>
                     </div>
                     `
-
-                    let wave = new Wave();
-                    options = {
-                        type: 'static',
-                        colors: ['white', 'grey']
-                    };
-                    wave.fromElement("player","output", options);
 
                     return done();
                 })
