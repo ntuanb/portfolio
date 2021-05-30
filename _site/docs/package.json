@@ -1,0 +1,11 @@
+{
+  "name": "tuanb.me",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ntuanb/portfolio.git",
+  "author": "Tuan Bui <ntuanb@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -r docs; jekyll build; cp -r _site docs;"
+  }
+}
