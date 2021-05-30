@@ -99,7 +99,17 @@ li:hover {
     position: absolute;
     left: 1rem;
     bottom: 0rem;
+    display: flex;
 }
+
+.refresh a {
+    margin-right: 1rem;
+}
+
+.refresh a:last-child {
+    margin-right: 0;
+}
+
 a {
     color: white;
     text-decoration: none;
