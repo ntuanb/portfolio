@@ -250,16 +250,38 @@ permalink: /
 
                     var playHtml = document.getElementsByClassName('spotify__source');
                     playHtml[0].innerHTML = `
-                    <div>
+                    <div class="player-container">
                         <audio id="player" class="player" loop>
                             <source src="${track.preview_url}" type="audio/mpeg"/>
                         </audio>
                         <a href="${track.external_urls.spotify}" title="${track.title}" class="music__album">
-                            <img src="${track.album.images[1].url}" height="50" width="50" />
+                            <img src="${track.album.images[1].url}" height="50" width="50" style="display: none"/>
+                            <div id="bars" class="bars bars--stop">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
                         </a>
                         <div style="padding: 0.75rem;"> 
-                            <span class="fa fa-2x fa-play spotify__play" onclick="document.getElementsByClassName('spotify__play')[0].style.display = 'none'; document.getElementsByClassName('spotify__pause')[0].style.display = 'block'; document.getElementsByClassName('player')[0].play(); "></span>
-                            <span class="fa fa-2x fa-pause spotify__pause" style="display: none;" onclick="document.getElementsByClassName('spotify__pause')[0].style.display = 'none'; document.getElementsByClassName('spotify__play')[0].style.display = 'block'; document.getElementsByClassName('player')[0].pause()";"></span>
+                            <span class="fa fa-2x fa-play spotify__play" onclick="
+                                document.getElementsByClassName('spotify__play')[0].style.display = 'none';
+                                document.getElementsByClassName('spotify__pause')[0].style.display = 'block';
+                                document.getElementsByClassName('player')[0].play();
+                                document.getElementById('bars').classList.toggle('bars--stop');
+                            "></span>
+                            <span class="fa fa-2x fa-pause spotify__pause" style="display: none;" onclick="
+                                document.getElementsByClassName('spotify__pause')[0].style.display = 'none';
+                                document.getElementsByClassName('spotify__play')[0].style.display = 'block';
+                                document.getElementsByClassName('player')[0].pause();
+                                document.getElementById('bars').classList.toggle('bars--stop');
+                            "></span>
                         </div>
                     </div>
                     `
